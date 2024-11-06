@@ -1,0 +1,31 @@
+nav.topbarmenu{
+    width: calc(100% - 15%);
+    background-color: red;
+    height: calc(100% - 95%);
+    position: fixed;
+    right: 0px;
+    top: 0px;
+}
+
+nav.sidebar{
+position: fixed;
+left: 0px;
+top: 0px;
+width: calc(100% - 85%);
+height: 100%;
+background-color: gray;
+}
+
+.main_layout{
+    position: fixed;
+right: 0px;
+bottom: 0px;
+width: calc(100% - 15%);
+height: calc(100% - 5%);
+background-color: blue;
+overflow: auto;
+}
+
+.toggle_layout{
+    width: calc(100% - 5%) !important;
+}
