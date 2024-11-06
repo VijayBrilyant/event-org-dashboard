@@ -1,0 +1,14 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root{
+    --theme-black:#101011;
+    --theme-dark:#1b1b1b;
+    --theme-gray:#97979c;
+}
+
+body{
+    background-color: var(--theme-black);
+    color: white;
+}
