@@ -11,7 +11,7 @@ const Home = () => {
 <Sidebar/>
 
     <div className='main_layout'>
-    <p>Home Page</p>
+    {/* <p>Home Page</p> */}
     </div>
     </>
   )

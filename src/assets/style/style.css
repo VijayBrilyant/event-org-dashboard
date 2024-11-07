@@ -2,13 +2,18 @@
 @tailwind components;
 @tailwind utilities;
 
-:root{
-    --theme-black:#101011;
-    --theme-dark:#1b1b1b;
-    --theme-gray:#97979c;
+
+:root {
+    --theme-black: #101011;
+    --theme-dark: #1b1b1b;
+    --theme-gray: #97979c;
+
+    font-family: "Mulish", sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
 }
 
-body{
+body {
     background-color: var(--theme-black);
     color: white;
 }
