@@ -1,31 +1,88 @@
-nav.topbarmenu{
+nav.sidebar {
+    position: fixed;
+    left: 0px;
+    top: 0px;
+    width: calc(100% - 85%);
+    height: 100%;
+    background-color: var(--theme-dark);
+}
+
+nav.topbarmenu {
     width: calc(100% - 15%);
-    background-color: red;
-    height: calc(100% - 95%);
+    background-color: var(--theme-black);
+    /* background-color: red; */
+    height: calc(100% - 93%);
     position: fixed;
     right: 0px;
     top: 0px;
+    z-index: 1;
+    transition: all .3s ease-in-out;
+
 }
 
-nav.sidebar{
-position: fixed;
-left: 0px;
-top: 0px;
-width: calc(100% - 85%);
-height: 100%;
-background-color: gray;
-}
-
-.main_layout{
+.main_layout {
     position: fixed;
-right: 0px;
-bottom: 0px;
-width: calc(100% - 15%);
-height: calc(100% - 5%);
-background-color: blue;
-overflow: auto;
+    right: 0px;
+    bottom: 0px;
+    width: calc(100% - 15%);
+    height: calc(100% - 7%);
+    background-color: var(--theme-black);
+    /* background-color: gray; */
+
+    overflow: auto;
+    transition: all .3s ease-in-out;
 }
 
-.toggle_layout{
+.toggle_layout {
     width: calc(100% - 5%) !important;
+}
+
+nav.topbarmenu .toggle-icon{
+    background: #3f384c;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    height: 25px;
+    width: 25px;
+
+}
+
+.toggle-icon{
+    left: -26px;
+    border-radius: 5px 0px 0px 5px;
+    transition: all .3s ease-in-out;
+}
+
+.toggle-right{
+    left: 0px;
+    border-radius: 0px 5px 5px 0px;
+
+}
+
+.icon-arrow{
+position: absolute;
+top: 50%;
+left: 50%;
+transform: translate(-50%, -50%) rotate(180deg);
+transition: all .5s ease-in-out;
+}
+
+.icon-rotate{
+transform: translate(-50%, -50%) rotate(0deg);
+}
+
+.strapbottom-border{
+    height: 100%;
+    border-bottom: 1px solid var(--theme-dark);
+}
+
+.sidebar .logo img{
+height: 30px;
+width: 50px;
+object-fit: contain;
+border-radius: 5px;
+}
+
+.sidebar .logo h5{
+    letter-spacing: 1px;
 }
