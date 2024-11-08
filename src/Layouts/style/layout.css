@@ -5,6 +5,22 @@ nav.sidebar {
     width: calc(100% - 85%);
     height: 100%;
     background-color: var(--theme-dark);
+    overflow: scroll;
+    transition: all .3s ease-in-out;
+
+}
+.toggle-sidebar{
+    width: calc(100% - 95%) !important;
+}
+
+.nav-content{
+    transition: all .8s ease-in-out;
+}
+.d-none{
+    transition: all .8s ease-in-out;
+transform: translateX(40px);
+opacity: 0;
+visibility: hidden;
 }
 
 nav.topbarmenu {
@@ -37,7 +53,9 @@ nav.topbarmenu {
     width: calc(100% - 5%) !important;
 }
 
-nav.topbarmenu .toggle-icon{
+
+
+nav.topbarmenu .toggle-icon {
     background: #3f384c;
     position: absolute;
     top: 50%;
@@ -47,42 +65,91 @@ nav.topbarmenu .toggle-icon{
 
 }
 
-.toggle-icon{
+.toggle-icon {
     left: -26px;
     border-radius: 5px 0px 0px 5px;
     transition: all .3s ease-in-out;
 }
 
-.toggle-right{
+.toggle-right {
     left: 0px;
     border-radius: 0px 5px 5px 0px;
 
 }
 
-.icon-arrow{
-position: absolute;
-top: 50%;
-left: 50%;
-transform: translate(-50%, -50%) rotate(180deg);
-transition: all .5s ease-in-out;
+.icon-arrow {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(180deg);
+    transition: all .5s ease-in-out;
 }
 
-.icon-rotate{
-transform: translate(-50%, -50%) rotate(0deg);
+.icon-rotate {
+    transform: translate(-50%, -50%) rotate(0deg);
 }
 
-.strapbottom-border{
+.strapbottom-border {
     height: 100%;
     border-bottom: 1px solid var(--theme-dark);
 }
 
-.sidebar .logo img{
-height: 30px;
-width: 50px;
-object-fit: contain;
-border-radius: 5px;
+.sidebar .logo{
+    width: max-content;
 }
 
-.sidebar .logo h5{
+.sidebar .logo img {
+    height: 30px;
+    width: 50px;
+    object-fit: contain;
+    border-radius: 5px;
+}
+
+.sidebar .logo h5 {
     letter-spacing: 1px;
+}
+
+.nav-link {
+    width: 92%;
+    transition: all .3s ease-in-out;
+    background-color: transparent;
+    border-radius: 5px;
+    color: #9f9fa4;
+}
+
+.nav-link:hover {
+    width: 92%;
+    transition: all .3s ease-in-out;
+    border-radius: 5px;
+    background-color: #2c2c2c;
+}
+
+.nav-active {
+    background-image: linear-gradient(130deg, #ff0033, #fc9504);
+    /* background-color: #5542f6; */
+    border-radius: 5px;
+    color: white;
+
+}
+
+.helper-nav{
+    position: absolute;
+    bottom: 0px;
+    border-top: 1px solid gray;
+    width: 100%;
+}
+
+.user-icon{
+    height: 35px;
+    width: 35px;
+}
+
+.user-icon img{
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+
+.topbarmenu .user{
+    border-left: 0.3px solid rgb(110, 110, 110);
 }
