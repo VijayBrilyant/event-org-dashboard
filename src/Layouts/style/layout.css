@@ -13,6 +13,28 @@ nav.sidebar {
     width: calc(100% - 95%) !important;
 }
 
+.sidebar::-webkit-scrollbar {
+    width: 2px; /* width of the scrollbar */
+}
+
+.sidebar:hover::-webkit-scrollbar {
+    width: 5px;
+}
+
+
+.sidebar::-webkit-scrollbar-thumb:vertical {
+    background-color:#dbdbdb ;
+}
+
+.sidebar:hover::-webkit-scrollbar-thumb:vertical {
+    background-color:#424242 ;
+    display: none;
+}
+.sidebar::-webkit-scrollbar-thumb:horizontal{
+display: none;
+}
+
+
 .nav-content{
     transition: all .8s ease-in-out;
 }
