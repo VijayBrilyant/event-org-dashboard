@@ -14,16 +14,17 @@ nav.sidebar {
 }
 
 .sidebar::-webkit-scrollbar {
-    width: 2px; /* width of the scrollbar */
+   display: none;
 }
 
-.sidebar:hover::-webkit-scrollbar {
+/* .sidebar:hover::-webkit-scrollbar {
     width: 5px;
-}
+} */
 
 
 .sidebar::-webkit-scrollbar-thumb:vertical {
     background-color:#dbdbdb ;
+    display: none;
 }
 
 .sidebar:hover::-webkit-scrollbar-thumb:vertical {
@@ -36,6 +37,7 @@ display: none;
 
 
 .nav-content{
+    padding-left: 50px;
     transition: all .8s ease-in-out;
 }
 .d-none{
@@ -133,7 +135,7 @@ nav.topbarmenu .toggle-icon {
 
 .nav-link {
     /* width: 92%; */
-width: max-content;
+/* width: max-content; */
     transition: all .3s ease-in-out;
     background-color: transparent;
     border-radius: 5px;
@@ -152,6 +154,22 @@ width: max-content;
     /* background-color: #5542f6; */
     border-radius: 5px;
     color: white;
+}
+
+.adj-icons{
+    position: absolute;
+    top: 50%;
+    transform: translateY( -50%);
+    left: 10px;
+    transition:all .3s ease-in-out;
+}
+
+.navicons-center{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+transition:all .3s ease-in-out;
 }
 
 .helper-nav{

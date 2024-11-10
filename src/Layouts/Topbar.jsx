@@ -11,9 +11,20 @@ const Topbar = () => {
         const toggleArrow = document.querySelectorAll('.icon-arrow');
         const toggleIcon = document.querySelectorAll('.toggle-icon');
         const sidebar = document.querySelectorAll('.sidebar');
-        const navcontent = document.querySelectorAll('.nav-content')
+        const navcontent = document.querySelectorAll('.nav-content');
+        const adjIcons = document.querySelectorAll('.adj-icons');
         mainlayout.forEach((item) => {
             item.classList.toggle('toggle_layout')
+
+            if(item.classList.contains('toggle_layout')){
+                adjIcons.forEach((item) => {
+                    item.classList.add('navicons-center')
+                })
+            }else{
+                adjIcons.forEach((item) => {
+                    item.classList.remove('navicons-center')
+                })
+            }
         })
 
         topbarmenu.forEach((item) => {
@@ -39,6 +50,9 @@ const Topbar = () => {
             item.classList.toggle('d-none')
 
         })
+
+
+
 
     }
 
