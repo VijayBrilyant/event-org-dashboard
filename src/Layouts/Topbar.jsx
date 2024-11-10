@@ -1,7 +1,7 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { IoNotificationsOutline } from 'react-icons/io5';
 import { RiArrowRightWideFill } from 'react-icons/ri';
-import userImg from '../assets/user.png';
+import userImg from '../assets/avatar.png';
 import { HiOutlineDotsHorizontal } from 'react-icons/hi';
 
 const Topbar = () => {
@@ -41,6 +41,16 @@ const Topbar = () => {
         })
 
     }
+
+    useEffect(() => {
+        const timer = setTimeout(() => {
+            togglemenu();
+            console.log('closed');
+        }, 8000);
+
+        return () => clearTimeout(timer); // Clean up timeout on component unmount
+    }, []);
+   
 
     return (
         <>
