@@ -7,7 +7,9 @@
     --theme-black: #101011;
     --theme-dark: #1b1b1b;
     --theme-gray: #97979c;
-
+    --theme-dark-gray: #606066;
+--theme-yellow:#fc9504;
+--theme-red:#ff0033;
     font-family: "Mulish", sans-serif;
     font-optical-sizing: auto;
     font-style: normal;
@@ -16,4 +18,107 @@
 body {
     background-color: var(--theme-black);
     color: white;
+}
+
+
+.theme-card{
+    background-image:  
+    linear-gradient(179deg, #ffffff12, #ffffff08);
+ border: 0.4px solid #ffffff12;
+    /* background-image:linear-gradient(180deg, #222223, #1c1c1d) ; */
+ }
+ 
+ .card_title .icon{
+     height: 25px;
+     width: 25px;
+     background-image: linear-gradient(179deg, #ffffff12, #ffffff08);
+     /* background-image: linear-gradient(130deg, #ff0033, #fc9504); */
+ 
+     border-radius: 100px;
+     position:relative;
+ }
+ 
+ .card_title .icon .card-icon{
+ position: absolute;
+ top: 50%;
+ left: 50%;
+ /* color: #fc9504; */
+ color: #ff0033;
+ transform: translate(-50%, -50%);
+ }
+ 
+ .graph-line{
+     height: 200px;
+     width: 100%;
+ }
+ 
+ .stats .per{
+ font-size: 10px;
+ background-color: #24d5b433;
+color: #24d5b5; 
+}
+
+table.recent-activity{
+    width: 100%;
+}
+
+
+table.recent-activity thead{
+    border-bottom: 1px solid var(--theme-gray);
+}
+
+table.recent-activity thead tr th{
+font-size: 11px;
+text-align: left;
+font-weight: 400;
+color: var(--theme-gray);
+padding: 10px 5px;
+}
+
+table.recent-activity tbody tr{
+border-bottom: 1px solid var(--theme-dark-gray);
+}
+
+.eql-card-100{
+    height: 100%;
+}
+
+table.recent-activity tbody tr td{
+    font-size: 10px;
+    width: 150px;
+    padding: 10px 5px;
+    color: rgb(209 213 219);
+}
+
+table.recent-activity tbody tr td.event-amount p{
+    color: #03a203;
+    background-color: #24d5b433;
+    border-radius: 100px;
+    padding: 0px 5px;
+    width: max-content;
+    font-weight: 600;
+    letter-spacing: 1px;
+}
+
+.table-img{
+    height: 34px;
+    width: 34px;
+    object-fit: contain;
+}
+
+.traffic-card select{
+border: 1px solid #454545;
+background: transparent;
+padding: 5px 9px;
+border-radius: 5px;
+outline: none;
+font-size: 12px;
+}
+
+.refresh{
+    cursor: pointer;
+}
+.refresh .refresh-icon{
+    color: var(--theme-gray);
+font-size: 18px;
 }
