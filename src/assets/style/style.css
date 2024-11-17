@@ -8,8 +8,8 @@
     --theme-dark: #1b1b1b;
     --theme-gray: #97979c;
     --theme-dark-gray: #606066;
---theme-yellow:#fc9504;
---theme-red:#ff0033;
+    --theme-yellow: #fc9504;
+    --theme-red: #ff0033;
     font-family: "Mulish", sans-serif;
     font-optical-sizing: auto;
     font-style: normal;
@@ -17,19 +17,32 @@
 
 
 
-.main_layout::-webkit-scrollbar {
-    display: none;
- }
+.main_layout::-webkit-scrollbar, .MuiTypography-overline, .MuiDialogActions-spacing {
+    display: none !important;
+}
 
 .main_layout::-webkit-scrollbar-thumb:vertical {
-display: none;
-    
+    display: none;
+
 }
 
-.main_layout::-webkit-scrollbar-thumb:horizontal{
-display: none;
+.main_layout::-webkit-scrollbar-thumb:horizontal {
+    display: none;
 }
 
+
+.MuiDateCalendar-root, .MuiPickersLayout-root{
+    width:100% !important;
+}
+
+.MuiPickersLayout-root{
+    max-width: 100% !important;
+    background-color: transparent !important;
+}
+
+.MuiDayCalendar-header, .MuiDayCalendar-weektkt-card{
+    justify-content: space-around !important;
+}
 
 body {
     background-color: var(--theme-black);
@@ -37,76 +50,76 @@ body {
 }
 
 
-.theme-card{
-    background-image:  
-    linear-gradient(179deg, #ffffff12, #ffffff08);
- border: 0.4px solid #ffffff12;
+.theme-card {
+    background-image:
+        linear-gradient(179deg, #ffffff12, #ffffff08);
+    border: 0.4px solid #ffffff12;
     /* background-image:linear-gradient(180deg, #222223, #1c1c1d) ; */
- }
- 
- .card_title .icon{
-     height: 25px;
-     width: 25px;
-     background-image: linear-gradient(179deg, #ffffff12, #ffffff08);
-     /* background-image: linear-gradient(130deg, #ff0033, #fc9504); */
- 
-     border-radius: 100px;
-     position:relative;
- }
- 
- .card_title .icon .card-icon{
- position: absolute;
- top: 50%;
- left: 50%;
- /* color: #fc9504; */
- color: #ff0033;
- transform: translate(-50%, -50%);
- }
- 
- .graph-line{
-     height: 200px;
-     width: 100%;
- }
- 
- .stats .per{
- font-size: 10px;
- background-color: #24d5b433;
-color: #24d5b5; 
 }
 
-table.recent-activity{
+.card_title .icon {
+    height: 25px;
+    width: 25px;
+    background-image: linear-gradient(179deg, #ffffff12, #ffffff08);
+    /* background-image: linear-gradient(130deg, #ff0033, #fc9504); */
+
+    border-radius: 100px;
+    position: relative;
+}
+
+.card_title .icon .card-icon {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    /* color: #fc9504; */
+    color: #ff0033;
+    transform: translate(-50%, -50%);
+}
+
+.graph-line {
+    height: 200px;
+    width: 100%;
+}
+
+.stats .per {
+    font-size: 10px;
+    background-color: #24d5b433;
+    color: #24d5b5;
+}
+
+table.recent-activity {
     width: 100%;
 }
 
 
-table.recent-activity thead{
+table.recent-activity thead {
     border-bottom: 1px solid var(--theme-gray);
 }
 
-table.recent-activity thead tr th{
-font-size: 11px;
-text-align: left;
-font-weight: 400;
-color: var(--theme-gray);
-padding: 10px 5px;
+table.recent-activity thead tr th {
+    font-size: 11px;
+    text-align: left;
+    font-weight: 400;
+    color: var(--theme-gray);
+    padding: 10px 5px;
 }
 
-table.recent-activity tbody tr{
-border-bottom: 1px solid var(--theme-dark-gray);
+table.recent-activity tbody tr {
+    border-bottom: 1px solid var(--theme-dark-gray);
 }
 
-.eql-card-100{
+.eql-card-100 {
     height: 100%;
 }
 
-table.recent-activity tbody tr td{
+table.recent-activity tbody tr td {
     font-size: 10px;
     width: 150px;
     padding: 10px 5px;
     color: rgb(209 213 219);
 }
 
-table.recent-activity tbody tr td.event-amount p{
+table.recent-activity tbody tr td.event-amount p {
     color: #03a203;
     background-color: #24d5b433;
     border-radius: 100px;
@@ -116,25 +129,384 @@ table.recent-activity tbody tr td.event-amount p{
     letter-spacing: 1px;
 }
 
-.table-img{
+.table-img {
     height: 34px;
     width: 34px;
     object-fit: contain;
 }
 
-.traffic-card select{
-border: 1px solid #454545;
-background: transparent;
-padding: 5px 9px;
+.traffic-card select {
+    border: 1px solid #454545;
+    background: transparent;
+    padding: 5px 9px;
+    border-radius: 5px;
+    outline: none;
+    font-size: 12px;
+}
+
+.refresh {
+    cursor: pointer;
+}
+
+.refresh .refresh-icon {
+    color: var(--theme-gray);
+    font-size: 18px;
+}
+
+.form-container{
+position: relative;
+}
+
+.eventform-ctrl input.event-title,
+.eventform-ctrl input.event-default,
+.eventform-ctrl textarea.event-default,
+.eventform-ctrl input.event-default-flag{
+    border: 1px solid wheat;
+    border-radius: 10px;
+    background-color: transparent;
+    color: wheat;
+    outline: none;
+    width: 100%;
+}
+
+.eventform-ctrl input.event-title{
+line-height: 2;
+font-size: 30px;
+padding: 0px 20px;
+}
+
+.eventform-ctrl input.event-default{
+line-height: 3;
+font-size: 16px;
+padding: 0px 45px;
+}
+
+.eventform-ctrl input.event-default-flag{
+    line-height: 3;
+    font-size: 16px;
+    padding: 0px 70px;
+    }
+
+.eventform-ctrl textarea.event-default{
+font-size: 14px;
+padding: 10px 15px;
+}
+
+.eventform-ctrl .form-container .icon{
+    position: absolute;
+    top: 42%;
+    left: 15px;
+    /* transform: translateY(-50%); */
+    font-size: 16px;
+    color: var(--theme-gray);
+}
+
+.eventform-ctrl  .form-container .menu-flags{
+    position: absolute;
+    left: 10px;
+    top: 26%;
+}
+
+.eventform-ctrl  .form-container .menu-flags-button{
+    height: 30px;
+    border: none;
+    padding: 5px 0px;
+}
+
+.ReactFlagsSelect-module_selectOptionsWithSearch__1W03w,
+.ReactFlagsSelect-module_filterBox__3m8EU,
+.ReactFlagsSelect-module_filterBox__3m8EU input{
+background-color: var(--theme-dark-gray) !important;
+border: none !important;
+}
+
+.ReactFlagsSelect-module_selectOptionsWithSearch__1W03w{
+    width: 280px !important;
+    position: absolute !important;
+    left: -8px !important;
+    border-radius: 8px !important;
+}
+
+.date-controllers button{
+    border-radius: 4px;
+    line-height: 2.4;
+    color: white;
+    width: 150px;
+    font-size: 14px;
+}
+
+
+.default-btn{
+    background-color: transparent;
+    border: 0.1px solid var(--theme-yellow) ;
+    transition: all 0.2s ease-in-out;
+}
+
+.outline-btn{
+background-color: var(--theme-yellow) !important;
+border: 1px solid transparent !important;
+}
+
+.ticket-card{
+    position: relative;
+width: 100%;
+margin-bottom: 250px;
+background-color: var(--theme-black);
+}
+
+.ticket-card .ticket-image{
+    position: relative;
+    height: 200px;
+    width: 100%;
+    overflow: hidden;
+    border-radius:10px ;
+}
+
+
+.ticket-card .ticket-image img{
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+
+.ticket-card .ticket-populate{
+    position: absolute;
+    bottom: -220px;
+    width: 100%;
+    padding: 30px 13px 15px 13px;
+    background-image: linear-gradient(179deg, transparent, #000000dd, black, black);
+border-radius: 10px;
+}
+
+.white-btn{
+border: none;
+background-color: white;
+line-height: 3;
+color: black;
+width: 100%;
+}
+
+
+
+.side-ticked-card{
+    position: fixed;
+    height: 100vh;
+    width: 100%;
+    top: 0px;
+    left: 0px;
+    z-index: 111111111;
+    transform: translateX(-100%);
+    opacity: 0;
+    transition: .7s ease-in-out;
+}
+
+.open-side-ticket-card{
+    transition: .7s ease-in-out;
+    transform: translateX(0%);
+    opacity: 1;
+}
+
+.overlayblack-blur{
+position: absolute;
+top: 0px;
+left: 0px;
+height: 100%;
+width: 100%;
+background-color: rgba(0, 0, 0, 0.556);
+backdrop-filter: blur(0px);
+opacity: 0;
+transform: translateX(-100%);
+z-index: -1;
+transition: 1s ease-in-out;
+
+}
+
+.open-overlayblack-blur{
+transition: 1s ease-in-out;
+    transform: translateX(0%);
+opacity: 1;
+    backdrop-filter: blur(3px);
+}
+
+.ticket-form{
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    background-color: black;
+    z-index: 1111;
+    width: 50%;
+    height: 100vh;
+    overflow: auto;
+}
+
+.ticket-form .ticket-form-ctrl label{
+    font-size: 12px;
+    padding: 4px 5px;
+    letter-spacing: 1px;
+}
+
+.ticket-form .ticket-form-ctrl input[type="text"],
+.ticket-form .ticket-form-ctrl input[type="number"],
+.ticket-form .ticket-form-ctrl textarea{
+width: 100%;
 border-radius: 5px;
+line-height: 2.6;
+padding: 0px 7px;
+border: 1px solid var(--theme-dark-gray);
+background-color: var(--theme-dark);
 outline: none;
 font-size: 12px;
 }
 
-.refresh{
-    cursor: pointer;
+.checkbox-custom-label{
+display: flex;
+gap: 10px;
+align-items: center;
 }
-.refresh .refresh-icon{
-    color: var(--theme-gray);
-font-size: 18px;
+
+.checkbox-custom-label input{
+    appearance: none;
+    -webkit-appearance: none; 
+    -moz-appearance: none; 
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.checkbox-custom-label input:checked + span{
+    background-color: var(--theme-yellow);
+    border: 0px solid gray;
+    position: relative;
+}
+
+
+span.checkbox-custom{
+    width: 20px;
+    height: 20px;
+    border: 1px solid var(--theme-gray);
+    border-radius: 4px;
+    display: inline-block;
+    transition: 0.3s;
+}
+
+.ticket-buttons button{
+    width: 200px;
+    text-align: center;
+    border-radius: 100px;
+    border: none;
+    line-height: 2.5;
+    background-color: white;
+    color: black;
+    font-size: 16px;
+}
+
+.ticket-buttons button.outline{
+    color: white;
+    background-color: transparent;
+    border:1px solid white;
+}
+
+
+.tkt-card{
+    position: relative;
+    width: 100%;
+    background-color: white;
+    color: black;
+}
+
+
+.date-info{
+    position: relative;
+    border-right: 2px dashed var(--theme-dark);
+}
+
+.tkt-card .date-info{
+    display: flex;
+    flex-direction: column;
+justify-content: center;
+align-items: center;
+gap: 5px;
+}
+
+
+.fixed-calender h4{
+    line-height: 0.7;
+}
+
+.fixed-calender p{
+    background-color: var(--theme-red);
+    border-radius: 10px;
+    padding: 2px 10px;
+    line-height: 1;
+    color: white;
+}
+
+.tkt-card .date-info .vertical-line{
+    height: 30px;
+    width: 1px;
+    border-right: 1.5px dashed var(--theme-gray);
+}
+
+.up-dot, .down-dot{
+position: absolute;
+height: 30px;
+width: 30px;
+border-radius: 100px;
+background-color: var(--theme-black);
+}
+
+.up-dot{
+    top: -29px;
+    right: -15px;
+}
+
+.down-dot{
+    bottom: -30px;
+    right: -15px;
+}
+    
+.tkt-card .more-info span{
+    background-color: var(--theme-yellow);
+    border-radius: 100px;
+    padding: 4px 10px;
+color: black;
+font-weight: 600;
+}
+
+.actions{
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
+
+.actions button{
+    height: 25px;
+    width: 25px;
+    border-radius: 100px;
+position: relative;
+}
+
+.actions button.edit{
+background-color: var(--theme-dark);
+}
+
+
+.actions button.delete{
+    background-color: red;
+    }
+
+.actions button.edit  .icon,
+.actions button.delete  .icon{
+    color: white;
+position: absolute;
+font-size: 12px;
+top: 50%;
+left: 50%;
+transform: translate(-50%, -50%);
+}
+
+.close-ticket{
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
 }
