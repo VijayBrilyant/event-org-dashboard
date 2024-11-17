@@ -17,16 +17,22 @@
 
 
 
-.main_layout::-webkit-scrollbar, .MuiTypography-overline, .MuiDialogActions-spacing {
+.main_layout::-webkit-scrollbar,
+.ticket-form::-webkit-scrollbar,
+ .MuiTypography-overline,
+  .MuiDialogActions-spacing {
     display: none !important;
 }
 
-.main_layout::-webkit-scrollbar-thumb:vertical {
+.main_layout::-webkit-scrollbar-thumb:vertical,
+.ticket-form::-webkit-scrollbar-thumb:vertical {
     display: none;
 
 }
 
-.main_layout::-webkit-scrollbar-thumb:horizontal {
+.main_layout::-webkit-scrollbar-thumb:horizontal,
+.ticket-form::-webkit-scrollbar-thumb:horizontal
+ {
     display: none;
 }
 
@@ -49,6 +55,9 @@ body {
     color: white;
 }
 
+.MuiDayCalendar-weekContainer{
+    justify-content: space-between !important; 
+}
 
 .theme-card {
     background-image:
