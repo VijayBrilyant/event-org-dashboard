@@ -1,10 +1,13 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { IoNotificationsOutline } from 'react-icons/io5';
 import { RiArrowRightWideFill } from 'react-icons/ri';
 import userImg from '../assets/avatar.png';
 import { HiOutlineDotsHorizontal } from 'react-icons/hi';
 
 const Topbar = () => {
+
+   const [autoClose, setAutoClose] = useState(false);
+    
     const togglemenu = () => {
         const mainlayout = document.querySelectorAll('.main_layout');
         const topbarmenu = document.querySelectorAll('.topbarmenu');
@@ -27,43 +30,31 @@ const Topbar = () => {
             }
         })
 
-        topbarmenu.forEach((item) => {
-            item.classList.toggle('toggle_layout')
-        })
+        topbarmenu.forEach((item) => {item.classList.toggle('toggle_layout')})
+        toggleArrow.forEach((item)=>{item.classList.toggle('icon-rotate')})
+        toggleIcon.forEach((item)=>{  item.classList.toggle('toggle-right') })
+        sidebar.forEach((item)=>{ item.classList.toggle('toggle-sidebar')})
+        navcontent.forEach((item)=>{ item.classList.toggle('d-none')  })
 
-        toggleArrow.forEach((item)=>{
-            item.classList.toggle('icon-rotate')
-
-        })
-
-        toggleIcon.forEach((item)=>{
-            item.classList.toggle('toggle-right')
-
-        })
-
-        sidebar.forEach((item)=>{
-            item.classList.toggle('toggle-sidebar')
-
-        })
-
-        navcontent.forEach((item)=>{
-            item.classList.toggle('d-none')
-
-        })
-
-
-
-
+        setAutoClose(true)
     }
 
     useEffect(() => {
-        const timer = setTimeout(() => {
-            togglemenu();
-            console.log('closed');
-        }, 8000);
 
-        return () => clearTimeout(timer); // Clean up timeout on component unmount
-    }, []);
+if(!autoClose){
+    const timer = setTimeout(() => {
+        togglemenu();
+  
+    }, 8000);
+
+    return () => clearTimeout(timer); 
+
+}else{
+    setAutoClose(true)
+ 
+}
+   
+    }, [autoClose]);
    
 
     return (

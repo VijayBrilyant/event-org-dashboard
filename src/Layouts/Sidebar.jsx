@@ -10,7 +10,7 @@ import { BsFileBarGraph, BsFillFileBarGraphFill } from 'react-icons/bs';
 const Sidebar = () => {
   const location = useLocation()
  const [currentLocation, setcurrentLocation] = useState(location.pathname)
-  console.log(currentLocation)
+
   return (
     <>
       <nav className='sidebar'>
@@ -30,10 +30,10 @@ const Sidebar = () => {
         </div>
         </Link>
 
-        <Link to='/events'>
-        <div className={`flex gap-3 items-center  relative py-2 mx-3 my-4 px-2 ${currentLocation === '/events' ? 'nav-active' : 'nav-link'} `}>
+        <Link to='/create-event'>
+        <div className={`flex gap-3 items-center  relative py-2 mx-3 my-4 px-2 ${currentLocation === '/create-event' ? 'nav-active' : 'nav-link'} `}>
         <div className='com-icon adj-icons'>
-        { currentLocation === '/events'? (<MdEmojiEvents  className='text-[20px] mx-1'/> ):(<MdOutlineEmojiEvents  className='text-[20px] mx-1'/> )  }
+        { currentLocation === '/create-event'? (<MdEmojiEvents  className='text-[20px] mx-1'/> ):(<MdOutlineEmojiEvents  className='text-[20px] mx-1'/> )  }
 
         </div>
         <p className='text-[13px] nav-content'>Events</p>
