@@ -1,14 +1,13 @@
-import React, { useState } from 'react'
+import React from 'react'
 import ReactFlagsSelect from "react-flags-select";
 
-const CountryFlags = () => {
-  const [selectedFlag, setSelectedFlag] = useState("IN");
+const CountryFlags = ({selectedFlag, getFlagCode}) => {
 
   return (
     <>
 <ReactFlagsSelect
     selected={selectedFlag}
-    onSelect={(code) => setSelectedFlag(code)}
+    onSelect={(code) => getFlagCode(code)}
     searchable
     fullWidth={false}
     alignOptionsToTop

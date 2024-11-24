@@ -7,7 +7,7 @@ nav.sidebar {
     background-color: var(--theme-dark);
     overflow: scroll;
     transition: all .3s ease-in-out;
-
+z-index: -1;
 }
 .toggle-sidebar{
     width: calc(100% - 95%) !important;

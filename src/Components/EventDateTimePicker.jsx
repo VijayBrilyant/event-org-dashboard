@@ -4,6 +4,7 @@ import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { StaticDateTimePicker } from '@mui/x-date-pickers';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
+import { RiArrowDownWideFill } from 'react-icons/ri';
 
 const darkTheme = createTheme({
   palette: {
@@ -62,7 +63,7 @@ const darkTheme = createTheme({
   },
 });
 
-const EventDateTimePicker = ({ eventStartDateTime, eventEndDateTime }) => {
+const EventDateTimePicker = ({ eventStartDateTime, eventEndDateTime, eventCalender, setEventCalender }) => {
   const [active, setActive] = useState('start');
   const [dateStartTime, setDateStartTime] = useState(dayjs());
   const [endDateTime, setEndDateTime] = useState(dayjs().add(1, 'day'));
@@ -86,52 +87,72 @@ const EventDateTimePicker = ({ eventStartDateTime, eventEndDateTime }) => {
 
   return (
     <div style={{ width: '100%' }}>
-      <div className="flex items-center date-controllers justify-between">
-        <button
-          type="button"
-          onClick={() => setActive('start')}
-          className={active === 'start' ? 'outline-btn' : 'default-btn'}
-        >
-          Start Date
-        </button>
-        <button
-          type="button"
-          onClick={() => setActive('end')}
-          className={active === 'end' ? 'outline-btn' : 'default-btn'}
-        >
-          End Date
-        </button>
-      </div>
 
-      <ThemeProvider theme={darkTheme}>
+      {
+        eventCalender === 'close' ? (
+          <div className='mt-5  flex items-center justify-between bg-black px-4 py-3 rounded-[10px] mb-2'
+            onClick={() => setEventCalender('open')}
+          >
+            <span className='text-[12px]'>Event Calender</span> <RiArrowDownWideFill />
+          </div>
+        ) : (
+          <div className='mt-5  flex items-center justify-between bg-black px-4 py-3 rounded-[10px] mb-2'
+            onClick={() => setEventCalender('close')}
+          >
+            <span className='text-[12px]'>Event Calender</span> <RiArrowDownWideFill />
+          </div>
+        )
+      }
 
 
 
-        <LocalizationProvider dateAdapter={AdapterDayjs}>
+      <div className={`bg-black py-3 pl-3 rounded-[10px] ${eventCalender === 'close' ? 'close-calender' : ''} `}>
+        <div className="flex items-center date-controllers justify-between pr-3">
+          <button
+            type="button"
+            onClick={() => setActive('start')}
+            className={active === 'start' ? 'outline-btn' : 'default-btn'}
+          >
+            Start Date
+          </button>
+          <button
+            type="button"
+            onClick={() => setActive('end')}
+            className={active === 'end' ? 'outline-btn' : 'default-btn'}
+          >
+            End Date
+          </button>
+        </div>
 
-          {active === 'start' ? (
-            //Start Date Time
-            <StaticDateTimePicker
-              value={dateStartTime}
-              onChange={handleStartDateChange}
-              disablePast
-            />
-          ) : (
-            //End Date Time
-            <StaticDateTimePicker
-              value={endDateTime}
-              onChange={handleEndDateChange}
-              disablePast
-              minDate={dateStartTime}
-            />
-          )
+        <ThemeProvider theme={darkTheme}>
 
-          }
 
-        </LocalizationProvider>
 
-        {/* End Date Picker */}
-        {/* <LocalizationProvider dateAdapter={AdapterDayjs}>
+          <LocalizationProvider dateAdapter={AdapterDayjs}>
+
+            {active === 'start' ? (
+              //Start Date Time
+              <StaticDateTimePicker
+                value={dateStartTime}
+                onChange={handleStartDateChange}
+                disablePast
+              />
+            ) : (
+              //End Date Time
+              <StaticDateTimePicker
+                value={endDateTime}
+                onChange={handleEndDateChange}
+                disablePast
+                minDate={dateStartTime}
+              />
+            )
+
+            }
+
+          </LocalizationProvider>
+
+          {/* End Date Picker */}
+          {/* <LocalizationProvider dateAdapter={AdapterDayjs}>
            <StaticDateTimePicker
               value={endDateTime}
               onChange={handleEndDateChange}
@@ -139,7 +160,11 @@ const EventDateTimePicker = ({ eventStartDateTime, eventEndDateTime }) => {
               minDate={dateStartTime}
             />
         </LocalizationProvider> */}
-      </ThemeProvider>
+        </ThemeProvider>
+      </div>
+
+
+
     </div>
   );
 };
