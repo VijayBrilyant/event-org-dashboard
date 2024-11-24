@@ -30,7 +30,7 @@ const Sidebar = () => {
         </div>
         </Link>
 
-        <Link to='/create-event'>
+        <Link to='/event-list'>
         <div className={`flex gap-3 items-center  relative py-2 mx-3 my-4 px-2 ${currentLocation === '/create-event' ? 'nav-active' : 'nav-link'} `}>
         <div className='com-icon adj-icons'>
         { currentLocation === '/create-event'? (<MdEmojiEvents  className='text-[20px] mx-1'/> ):(<MdOutlineEmojiEvents  className='text-[20px] mx-1'/> )  }

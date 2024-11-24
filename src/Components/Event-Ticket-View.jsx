@@ -1,12 +1,32 @@
-import React from 'react'
+import React, { useState } from 'react'
 import EvntImg from '../assets/halloween.png';
 import { IoLocationOutline } from 'react-icons/io5';
 import { MdAdd, MdOutlineAccessTime } from 'react-icons/md';
+import { RiArrowDownWideFill } from 'react-icons/ri';
 
 const EventTicketView = ({ formData, setOpenTicketView }) => {
+
+    const [ticketPreview, setTicketPreview] = useState('close')
+
     return (
         <>
-            <div className='ticket-card rounded-[10px]'>
+          {
+            ticketPreview === 'close' ? (
+          <div className='mt-5  flex items-center justify-between bg-black px-4 py-3 rounded-[10px] mb-2'
+            onClick={() => setTicketPreview('open')}
+          >
+            <span className='text-[12px]'>Open Preview</span> <RiArrowDownWideFill />
+          </div>
+        ) : (
+          <div className='mt-5  flex items-center justify-between bg-black px-4 py-3 rounded-[10px] mb-2'
+            onClick={() => setTicketPreview('close')}
+          >
+            <span className='text-[12px]'>Preview</span> <RiArrowDownWideFill />
+          </div>
+        )
+      }
+
+            <div className={`ticket-card rounded-[10px] ${ticketPreview === 'close'? 'close-calender' : ''}`}>
                 <div className='ticket-image'>
                     <img src={EvntImg} alt='' />
                 </div>

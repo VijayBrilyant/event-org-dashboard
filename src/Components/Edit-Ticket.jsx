@@ -1,26 +1,33 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { GrClose } from 'react-icons/gr';
 import { RiArrowRightWideFill } from 'react-icons/ri';
+import { useNavigate } from 'react-router-dom';
 
-const AddTickets = ({ setOpenTicketView, openTicketView, storeTicketData }) => {
+const EditTickets = ({ openEditTicketView, setOpenEditTicketView, selectedTicket, updateTicketData }) => {
     const [salesPeriod, setSalesPeriod] = useState(false);
     const [validTime, setValidTime] = useState(false);
     const [limitQty, setLimitQty] = useState(false);
 
-    const [getTicketData, setGetTicketData] = useState({
-        // id:'',
+    const [getTicketData, setGetTicketData] = useState(selectedTicket || {
+        id: '',
         ticket_name: '',
         qty: '',
         price: '',
-        sale_start:'',
-        sale_end:'',
-        valid_start:'',
-        valid_end:'',
-        ticket_description:''
+        sale_start: '',
+        sale_end: '',
+        valid_start: '',
+        valid_end: '',
+        ticket_description: ''
         // hideTire: false,
         // hideTicket: false,
         // disableTicket: false
     })
+
+    useEffect(() => {
+        if (selectedTicket) {
+            setGetTicketData(selectedTicket);
+        }
+    }, [selectedTicket]);
 
     const handleChange = (e) => {
         setGetTicketData({ ...getTicketData, [e.target.name]: e.target.value })
@@ -31,23 +38,21 @@ const AddTickets = ({ setOpenTicketView, openTicketView, storeTicketData }) => {
         setGetTicketData((prev) => ({ ...prev, [name]: checked }))
     }
 
-    const handleSubmit = () => {
-        if (storeTicketData) {
-            const ticketWithId = { ...getTicketData, id: Date.now().toString() };
-            storeTicketData(ticketWithId)
-        }
-    }
 
+    const handleUpdateTicket = () => {
+        updateTicketData(getTicketData); 
+        setOpenEditTicketView(false);
+    };
 
     return (
         <>
-            <div className={`side-ticked-card ${openTicketView === true ? 'open-side-ticket-card' : ''}`}>
+            <div className={`side-ticked-card ${openEditTicketView === true ? 'open-side-ticket-card' : ''}`}>
 
                 <div className='ticket-form px-10 py-5'>
                     <div className='flex justify-between items-center'>
-                        <h3 className='text-[30px] text-gray-400'>Add Ticket</h3>
+                        <h3 className='text-[30px] text-gray-400'>Edit Ticket</h3>
 
-                        <button type='button' onClick={() => setOpenTicketView(false)} className='close-ticket'><GrClose className='text-[30px]' /></button>
+                        <button type='button' onClick={() => setOpenEditTicketView(false)} className='close-ticket'><GrClose className='text-[30px]' /></button>
                     </div>
 
                     <div className=' bg-gray-600 w-full my-5 h-px' />
@@ -58,17 +63,17 @@ const AddTickets = ({ setOpenTicketView, openTicketView, storeTicketData }) => {
 
                             <div className='col-span-3 ticket-form-ctrl'>
                                 <label>Name</label>
-                                <input type='text' placeholder='Ticket Name' name='ticket_name' onChange={handleChange} />
+                                <input type='text' placeholder='Ticket Name'  value={getTicketData.ticket_name || '' } name='ticket_name' onChange={handleChange} />
                             </div>
 
                             <div className='col-span-1 ticket-form-ctrl'>
                                 <label>Qty</label>
-                                <input type='number' placeholder='Unlimited' name='qty' onChange={handleChange} />
+                                <input type='number' placeholder='Unlimited' name='qty' value={getTicketData.qty || '' }  onChange={handleChange} />
                             </div>
 
                             <div className='col-span-1 ticket-form-ctrl'>
                                 <label>Price</label>
-                                <input type='number' placeholder='$' name='price' onChange={handleChange} />
+                                <input type='number' placeholder='$' name='price'   value={getTicketData.price || ''}  onChange={handleChange} />
                             </div>
 
                         </div>
@@ -124,7 +129,7 @@ const AddTickets = ({ setOpenTicketView, openTicketView, storeTicketData }) => {
                             {validTime ? (
                                 <div className='col-span-2'>
                                     <div className='grid grid-cols-11 ticket-form-ctrl items-center'>
-                                        <input type='dateTime-local' placeholder='Start Time' className='col-span-5' name='valid_start' onChange={handleChange}/>
+                                        <input type='dateTime-local' placeholder='Start Time' className='col-span-5' name='valid_start' onChange={handleChange} />
                                         <p className='col-span-1 flex justify-center m-0'><RiArrowRightWideFill /></p>
                                         <input type='dateTime-local' placeholder='End Time' className='col-span-5' name='valid_end' onChange={handleChange} />
                                     </div>
@@ -138,7 +143,7 @@ const AddTickets = ({ setOpenTicketView, openTicketView, storeTicketData }) => {
                         <div className='ticket-form-ctrl'>
                             <label>Description</label>
                             {/* <textarea cols={4} rows={4} placeholder='' type='text' name='ticket_description' onChange={handleChange}  /> */}
-                            <input type='text' placeholder='Description' className='col-span-5' name='ticket_description' onChange={handleChange} />
+                            <input type='text' placeholder='Description'  value={getTicketData.ticket_description || ''}  className='col-span-5' name='ticket_description' onChange={handleChange} />
                         </div>
 
 
@@ -147,6 +152,7 @@ const AddTickets = ({ setOpenTicketView, openTicketView, storeTicketData }) => {
                         <div className=' bg-gray-700 w-full my-5 h-px' />
 
                         <h4>Ticket Options</h4>
+
                         {/* <div className='grid grid-cols-4 gap-1 my-5'>
 
                             <div className='col-span-2 ticket-form-ctrl'>
@@ -241,16 +247,16 @@ const AddTickets = ({ setOpenTicketView, openTicketView, storeTicketData }) => {
 
                         <div className='flex gap-4 justify-end items-center ticket-buttons mt-14'>
                             <button type='button' className='outline'>Cancle</button>
-                            <button type='button' onClick={handleSubmit}>Create Ticket</button>
+                            <button type='button' onClick={handleUpdateTicket}>Update Ticket</button>
                         </div>
                     </form>
 
                 </div>
 
-                <div className={`overlayblack-blur ${openTicketView === true ? 'open-overlayblack-blur' : ''}`} onClick={() => setOpenTicketView(false)} />
+                <div className={`overlayblack-blur ${openEditTicketView === true ? 'open-overlayblack-blur' : ''}`} onClick={() => setOpenEditTicketView(false)} />
             </div>
         </>
     )
 }
 
-export default AddTickets
+export default EditTickets

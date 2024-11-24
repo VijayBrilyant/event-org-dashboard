@@ -13,11 +13,17 @@ import EventTicketView from '../Components/Event-Ticket-View'
 import AddTickets from '../Components/Add-Tickets'
 import Tickets from '../Components/Tickets'
 import Flare_Poster from '../Components/Flare-Poster'
-import { useDispatch } from 'react-redux'
-import { eventpost } from '../Store/slice/event'
+import { useDispatch, useSelector } from 'react-redux'
+import { eventgetbyid, eventpost, eventUpdateById } from '../Store/slice/event'
 import EditTickets from '../Components/Edit-Ticket'
-const CreateEvent = () => {
+import { useNavigate, useParams } from 'react-router-dom'
+const EditEvent = () => {
   const dispatch = useDispatch()
+  const navigate = useNavigate()
+const {data} = useSelector((state)=> state.event)
+
+  const {id} = useParams()
+
   const [selectedFlag, setSelectedFlag] = useState("IN");
   const [eventStartDateTime, setEventStartDateTime] = useState(dayjs().format('DD-MM-YYYY h:mm A'))
   const [eventEndDateTime, setEventEndDateTime] = useState(dayjs().add(1, 'day').format('DD-MM-YYYY h:mm A'))
@@ -26,7 +32,16 @@ const CreateEvent = () => {
   const [selectedTicket, setSelectedTicket] = useState(null);
   const [eventCalender, setEventCalender] = useState('close')
 
-  const [formData, setFormData] = useState({
+useEffect(()=>{
+  dispatch(eventgetbyid(id))
+},[])
+
+
+// useEffect(()=>{
+// console.log(data.address)
+// },[data])
+
+  const [formData, setFormData] = useState( {
     organizer_id: '67416f3efe174b35753cb437',
     event_name: "",
     start_date: eventStartDateTime,
@@ -37,6 +52,27 @@ const CreateEvent = () => {
     flyer: '',
     tickets: []
   })
+
+
+  useEffect(() => {
+    if (data) {
+      setFormData({
+        organizer_id: data.organizer_id || '67416f3efe174b35753cb437',
+        event_name: data.event_name || '',
+        start_date: data.start_date || eventStartDateTime,
+        end_date: data.end_date || eventEndDateTime,
+        venue_name: data.venue_name || '',
+        address: data.address || '',
+        event_description: data.event_description || '',
+        flyer: data.flyer || '',
+        tickets: data.tickets || [],
+      });
+      setEventStartDateTime(data.start_date || eventStartDateTime);
+      setEventEndDateTime(data.end_date || eventEndDateTime);
+    }
+  }, [data]);
+
+
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -64,9 +100,10 @@ const CreateEvent = () => {
 
 
 
-  const handleCreateEvent = () => {
+  const handleUpdateEvent = () => {
     console.log(formData)
-    dispatch(eventpost(formData))
+    dispatch(eventUpdateById({id:id, formData: formData}))
+    navigate('/event-list')
   }
 
   const handleDeleteTicket = (index) => {
@@ -91,7 +128,7 @@ const CreateEvent = () => {
       <Sidebar />
 
       <div className='main_layout pt-5 pb-5 px-8'>
-        <h1 className='text-[30px]'>Create Event</h1>
+        <h1 className='text-[30px]'>Edit Event</h1>
 
         <div className='container  mt-10'>
           <div className='grid md:grid-cols-6 grid-cols-1 gap-10'>
@@ -102,8 +139,8 @@ const CreateEvent = () => {
 
                 <div className='eventform-ctrl'>
                   <label className='text-[14px] mx-2 text-gray-300'>Event Name</label>
-                  <input type='text' className='event-title mt-2' name='event_name' placeholder='Title of the event'
-                    value={formData.event_name}
+                  <input type='text' className='event-title mt-2' name='event_name' value={formData.event_name} placeholder='Title of the event'
+                   
                     onChange={handleChange} />
                 </div>
 
@@ -205,7 +242,7 @@ const CreateEvent = () => {
 
               <div className='flex gap-4 justify-start items-center ticket-buttons mt-14'>
                 {/* <button type='button' className='outline'>Cancle</button> */}
-                <button type='button' onClick={handleCreateEvent}> Submit</button>
+                <button type='button' onClick={handleUpdateEvent}> Submit</button>
               </div>
             </div>
 
@@ -257,4 +294,4 @@ const CreateEvent = () => {
   )
 }
 
-export default CreateEvent
+export default EditEvent
