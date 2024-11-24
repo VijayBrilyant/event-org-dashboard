@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { GrClose } from 'react-icons/gr';
 import { RiArrowRightWideFill } from 'react-icons/ri';
+import { useNavigate } from 'react-router-dom';
 
 const EditTickets = ({ openEditTicketView, setOpenEditTicketView, selectedTicket, updateTicketData }) => {
     const [salesPeriod, setSalesPeriod] = useState(false);
@@ -39,8 +40,8 @@ const EditTickets = ({ openEditTicketView, setOpenEditTicketView, selectedTicket
 
 
     const handleUpdateTicket = () => {
-        updateTicketData(getTicketData); // Send updated ticket data to parent
-        setOpenEditTicketView(false); // Close the EditTickets modal
+        updateTicketData(getTicketData); 
+        setOpenEditTicketView(false);
     };
 
     return (

@@ -16,9 +16,10 @@ import Flare_Poster from '../Components/Flare-Poster'
 import { useDispatch, useSelector } from 'react-redux'
 import { eventgetbyid, eventpost, eventUpdateById } from '../Store/slice/event'
 import EditTickets from '../Components/Edit-Ticket'
-import { useParams } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 const EditEvent = () => {
   const dispatch = useDispatch()
+  const navigate = useNavigate()
 const {data} = useSelector((state)=> state.event)
 
   const {id} = useParams()
@@ -102,7 +103,7 @@ useEffect(()=>{
   const handleUpdateEvent = () => {
     console.log(formData)
     dispatch(eventUpdateById({id:id, formData: formData}))
-    dispatch(eventgetbyid(id))
+    navigate('/event-list')
   }
 
   const handleDeleteTicket = (index) => {

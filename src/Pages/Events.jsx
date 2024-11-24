@@ -158,9 +158,8 @@ useEffect(() => {
                         <VscEye className='icon' /> <span className='text-[10px]'>View</span>
                       </button>
 
-<Link to={`/edit-event/${event._id}`}>
-<button className='rounded btn-border border border-gray-500'><MdOutlineModeEdit className='icon' /></button>
-</Link>
+<Link to={`/edit-event/${event._id}`} className='rounded btn-border border border-gray-500'><MdOutlineModeEdit className='icon' /></Link>
+
 
                       <button className='rounded btn-border border border-gray-500'><RiDeleteBin6Line className='icon-delete' /></button>
                     </div>
